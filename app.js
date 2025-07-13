@@ -3,8 +3,6 @@ dotEnv.config();
 
 const express = require("express");
 require("./config/db");
-// require("./drizzle/config");
-// require("./drizzle/schema");
 
 const { apiRouter } = require("./api/v1/routes");
 const cors = require("cors");
@@ -12,7 +10,16 @@ const cors = require("cors");
 const app = express();
 app.use(express.json());
 
-app.use(cors());
+app.use(
+  cors({
+    origin:
+      "https://wealth-query-ai-git-main-mohana-vamsi-pernis-projects.vercel.app",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+  })
+);
+
+app.options("*", cors());
 
 app.use((req, res, next) => {
   console.log("-----");
