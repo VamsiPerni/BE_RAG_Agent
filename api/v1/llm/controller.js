@@ -34,7 +34,7 @@ const askController = async (req, res) => {
   }
 }
 ${JSON.stringify(context)}
-Answer the user's question accurately. Only return a valid JSON object with no explanation or markdown formatting.`;
+Answer the user's question accurately. Only return a valid JSON object with no explanation or markdown formatting.Don't give any answer if you are not able to give the answer in JSON format.Don't mention anything before and after the JSON Format...only JSON format is required`;
 
     const response = await groq.post("", {
       model: "llama3-8b-8192",
